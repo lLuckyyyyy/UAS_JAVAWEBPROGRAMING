@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Category - MiniLibrary</title>
+    <!-- CDN Tailwind CSS untuk Tampilan Premium -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 flex items-center justify-center py-12 px-4">
+
+    <div class="max-w-md w-full">
+        <!-- Card -->
+        <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+            <!-- Header Card -->
+            <div class="bg-slate-900 px-6 py-5 text-white">
+                <h2 th:text="${title}" class="text-xl font-bold tracking-tight">Form Category</h2>
+                <p class="text-xs text-slate-300 mt-1">Masukkan data kategori buku dengan teliti.</p>
+            </div>
+
+            <!-- Form -->
+            <form action="#" th:action="@{/categories/save}" th:object="${category}" method="post" class="p-6 space-y-5">
+                <!-- Hidden ID untuk EDIT -->
+                <input id="id" th:field="*{id}" type="hidden">
+
+                <div class="space-y-2">
+                    <label for="name" class="block text-sm font-semibold text-slate-700">Nama Kategori</label>
+                    <input id="name" th:field="*{name}" type="text" placeholder="Contoh: Pemrograman Java, Novel, Sains" required autofocus
+                           class="w-full rounded-lg border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-sm outline-none">
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-xs text-rose-500 font-medium mt-1">Error message</p>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+                    <a th:href="@{/categories}" class="inline-flex justify-center items-center px-4 py-2.5 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
+                        Batal
+                    </a>
+                    <button type="submit" class="inline-flex justify-center items-center px-6 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-sm hover:shadow transition-all">
+                        Simpan Kategori
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

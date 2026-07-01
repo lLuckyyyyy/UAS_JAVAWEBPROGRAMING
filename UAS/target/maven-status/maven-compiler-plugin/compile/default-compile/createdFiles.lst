@@ -1,0 +1,4 @@
+com\example\libr\LibrApplication.class
+com\example\libr\repositories\CategoryRepository.class
+com\example\libr\entities\Category.class
+com\example\libr\controllers\CategoryController.class
